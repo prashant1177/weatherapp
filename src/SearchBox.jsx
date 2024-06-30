@@ -1,6 +1,9 @@
 import TextField from "@mui/material/TextField";
 import Button from '@mui/material/Button';
 import { useState } from "react";
+import "./App.css";
+import CardContent from "@mui/material/CardContent";
+import Card from "@mui/material/Card";
 
 export default function SearchBox({updateInfo}) {
     let [error, setError] = useState(false);
@@ -14,8 +17,12 @@ export default function SearchBox({updateInfo}) {
        let jsonResponse = await response.json();
        console.log(jsonResponse);
        let result ={
-        city: city,
+        city: jsonResponse.name,
         temp: jsonResponse.main.temp,
+        feels_like: jsonResponse.main.feels_like,
+        temp_max: jsonResponse.main.temp_max,
+        temp_min: jsonResponse.main.temp,
+        humidity: jsonResponse.main.humidity,
        }
        setError(false);
        return result;
@@ -32,22 +39,53 @@ export default function SearchBox({updateInfo}) {
         console.log(city);
         setCity("");
         let newInfo = await getWeatherInfo();
+        imageBG(newInfo);
         updateInfo(newInfo);
-        setError(false);}
+        setError(false);
+      }
         catch(err){
+          console.log(err);
           setError(true);
         }
     };
+    const [bgImage, setbgImage] = useState(
+      "https://cdn.pixabay.com/photo/2024/04/24/08/02/ai-generated-8716913_960_720.jpg"
+    );
+    function imageBG(newInfo) {
+      if (newInfo.humidity > 75) {
+        setbgImage(
+          "https://cdn.pixabay.com/photo/2023/09/10/05/12/ai-generated-8244282_960_720.png"
+        );
+      } else {
+        if (newInfo.temp > 28) {
+          setbgImage(
+            "https://cdn.pixabay.com/photo/2024/04/24/08/02/ai-generated-8716913_960_720.jpg"
+          );
+        } else if (newInfo.temp < 28 && newInfo.temp > 15) {
+          setbgImage(
+            "https://cdn.pixabay.com/photo/2024/04/27/19/35/ai-generated-8724273_960_720.png"
+          );
+        } else {
+          setbgImage(
+            "https://cdn.pixabay.com/photo/2020/01/04/18/40/trees-4741364_960_720.png"
+          );
+        }
+      }
+      console.log(bgImage);
+    }
 
   return (
     <>
-      <h3>Search for the weather </h3>
-      <form onSubmit={handleSubmit}>
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" required value={city} onChange={handleChange}/>
-        <Button variant="contained" type="submit">Search</Button>
+      <img className="bgImages" src={bgImage} />
+    <Card className="searchBoxContainer cardContainer" sx={{ minWidth: 700 }} >
+    <CardContent>
+      <form onSubmit={handleSubmit} className="formContainer" >
+        <TextField  margin="normal" className="tfSearch" id="outlined-basic" label="City Name" variant="outlined" required value={city} onChange={handleChange}/>
+        <Button className="btnSearch" variant="contained" type="submit">Search</Button>
         {error && <p>No Such city found</p>}
       </form>
-    </>
+      </CardContent>
+    </Card></>
   );
 }
  
