@@ -1,12 +1,9 @@
 import TextField from "@mui/material/TextField";
 import Button from '@mui/material/Button';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 import CardContent from "@mui/material/CardContent";
 import Card from "@mui/material/Card";
-import NavigationIcon from '@mui/icons-material/Navigation';
-import { SvgIcon } from "@mui/material";
-
 
 export default function SearchBox({updateInfo}) {
     let [error, setError] = useState(false);
@@ -86,6 +83,7 @@ export default function SearchBox({updateInfo}) {
     <>
       <img className="bgImages" src={bgImage} style={{opacity: `${visibility}`}}/>
     <Card className="searchBoxContainer cardContainer" sx={{ minWidth: 700 }} >
+    <h1>Weather App</h1>
     <CardContent>
       <form onSubmit={handleSubmit} className="formContainer" >
         <TextField  margin="normal" className="tfSearch" id="outlined-basic" label="City Name" variant="outlined" required value={city} onChange={handleChange}/>

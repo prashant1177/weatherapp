@@ -21,7 +21,8 @@ body {
 .searchBoxContainer {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 25px;
+  text-align: center;
 }
 .formContainer {
   padding: 15px;
