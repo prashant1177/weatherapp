@@ -1,13 +1,17 @@
 import TextField from "@mui/material/TextField";
 import Button from '@mui/material/Button';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import CardContent from "@mui/material/CardContent";
 import Card from "@mui/material/Card";
+import NavigationIcon from '@mui/icons-material/Navigation';
+import { SvgIcon } from "@mui/material";
+
 
 export default function SearchBox({updateInfo}) {
     let [error, setError] = useState(false);
     let [city, setCity] = useState("");
+    let [visibility, setvisibility] = useState("100");
     const API_URL = "https://api.openweathermap.org/data/2.5/weather";
     const API_KEY = "15f7824839b1dd07ca942458fd27692c";
 
@@ -23,6 +27,8 @@ export default function SearchBox({updateInfo}) {
         temp_max: jsonResponse.main.temp_max,
         temp_min: jsonResponse.main.temp,
         humidity: jsonResponse.main.humidity,
+        windDirection: jsonResponse.wind.deg,
+        visibility: jsonResponse.visibility,
        }
        setError(false);
        return result;
@@ -41,6 +47,8 @@ export default function SearchBox({updateInfo}) {
         let newInfo = await getWeatherInfo();
         imageBG(newInfo);
         updateInfo(newInfo);
+        setvisibility(newInfo.visibility/100);
+        console.log(visibility);
         setError(false);
       }
         catch(err){
@@ -76,7 +84,7 @@ export default function SearchBox({updateInfo}) {
 
   return (
     <>
-      <img className="bgImages" src={bgImage} />
+      <img className="bgImages" src={bgImage} style={{opacity: `${visibility}`}}/>
     <Card className="searchBoxContainer cardContainer" sx={{ minWidth: 700 }} >
     <CardContent>
       <form onSubmit={handleSubmit} className="formContainer" >
@@ -85,7 +93,9 @@ export default function SearchBox({updateInfo}) {
         {error && <p>No Such city found</p>}
       </form>
       </CardContent>
-    </Card></>
+    </Card>
+    </>
+    
   );
 }
  
