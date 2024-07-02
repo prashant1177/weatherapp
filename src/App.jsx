@@ -11,7 +11,6 @@ function App() {
 
   let updateInfo = (result) => {
     setweatherInfo(result);
-    console.log(weatherInfo.windDirection);
     setShowInfo(true);
   };
 
