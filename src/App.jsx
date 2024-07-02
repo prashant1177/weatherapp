@@ -3,18 +3,15 @@ import SearchBox from "./SearchBox.jsx";
 import InfoBox from "./InfoBox.jsx";
 import React from "react";
 import NavigationIcon from '@mui/icons-material/Navigation';
-import { SvgIcon } from "@mui/material";
 import "./App.css";
 
 function App() {
   const [weatherInfo, setweatherInfo] = useState({});
   const [showInfo, setShowInfo] = useState(false);
-  let [wind, setWind] = useState("45deg");
 
   let updateInfo = (result) => {
     setweatherInfo(result);
-    setWind(weatherInfo.windDirection);
-    console.log(wind);
+    console.log(weatherInfo.windDirection);
     setShowInfo(true);
   };
 
@@ -31,7 +28,7 @@ function App() {
         <NavigationIcon
           sx={{ fontSize: 200 }}
           id="windRotation"
-          style={{ transform: `rotate(${wind}deg)`, color: "white"}}
+          style={{ transform: `rotate(${weatherInfo.windDirection}deg)`, color: "white"}}
         /> <h2 style={{color: "white"}}>Wind Direction</h2>
         </div>
       </div>
