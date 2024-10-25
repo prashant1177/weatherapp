@@ -8,7 +8,7 @@ export default function InfoBox({info}) {
   return (
     <>
     <hr/>
-      <Card sx={{ minWidth: 700 }} className="cardContainer">
+      <Card className="cardContainer">
         <CardContent>
           <div className="CityTemp">
           <Typography gutterBottom variant="h3" component="div">{info.city}
