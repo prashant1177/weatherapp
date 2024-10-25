@@ -82,7 +82,7 @@ export default function SearchBox({updateInfo}) {
   return (
     <>
       <img className="bgImages" src={bgImage} style={{opacity: `${visibility}`}}/>
-    <Card className="searchBoxContainer cardContainer" sx={{ minWidth: 700 }} >
+    <Card className="searchBoxContainer cardContainer" >
     <h1>Weather App</h1>
     <CardContent>
       <form onSubmit={handleSubmit} className="formContainer" >
