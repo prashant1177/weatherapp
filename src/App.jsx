@@ -25,7 +25,7 @@ function App() {
         )}
 <div className="windData">
         <NavigationIcon
-          sx={{ fontSize: 200 }}
+          sx={{ fontSize: 160 }}
           id="windRotation"
           style={{ transform: `rotate(${weatherInfo.windDirection}deg)`, color: "white"}}
         /> <h2 style={{color: "white"}}>Wind Direction</h2>
