@@ -1,6 +1,6 @@
 import { useState } from "react";
-import SearchBox from "./SearchBox.jsx";
-import InfoBox from "./InfoBox.jsx";
+import SearchBox from "./SearchBox.js";
+import InfoBox from "./InfoBox.js";
 import React from "react";
 import NavigationIcon from '@mui/icons-material/Navigation';
 import "./App.css";
