@@ -1,36 +1,25 @@
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
 import "./App.css";
 
-export default function InfoBox({info}) {
- 
+export default function InfoBox({ info }) {
   return (
     <>
-    <hr/>
-      <Card className="cardContainer">
-        <CardContent>
-          <div className="CityTemp">
-          <Typography gutterBottom variant="h3" component="div">{info.city}
-          </Typography>
-          <Typography gutterBottom variant="h3" component="div">
-         {info.temp}&deg;C
-          </Typography>
-          </div>
-          <Typography variant="body2" color="text.secondary">
-          Feels like: {info.feels_like}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-          temp_max: {info.temp_max}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-          temp_min: {info.temp_min}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-          humidity: {info.humidity}
-          </Typography>
-        </CardContent>
-      </Card>
+      <div className="infocardContainer">
+        <div className="cityname">
+          <h1>{info.city ? info.city : "Mumbai"}, {info.country ? info.country : "IN"}</h1>
+        </div>
+        <div className="infoGrid">
+          <div className="infoContainer"><span className="info"> {info.weather ? info.weather : "25"}</span><p>{info.weatherDesc}</p></div>
+          <div className="infoContainer"><span className="info"> {info.temp ? info.temp : "25"}&deg;</span><p>Temperature</p></div>
+
+          
+          <div className="infoContainer"><span className="info"> {info.feels_like ? info.feels_like : "25"}&deg; </span><p>Feels Like</p></div>
+          <div className="infoContainer"><span className="info"> {info.windSpeed ? info.windSpeed : "25"} </span><p>Wind (km/h)</p></div>
+
+          
+          <div className="infoContainer"><span className="info"> {info.humidity ? info.humidity : "25"} </span><p>Humidity</p></div>
+          <div className="infoContainer"><span className="info"> {info.visibility ? info.visibility : "25"}</span><p>Visibility</p></div>
+        </div>
+      </div>
     </>
   );
 }
