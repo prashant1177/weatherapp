@@ -13,7 +13,7 @@ body {
   padding: 0px;
   font-family: "Poppins", serif;
 }
-
+a{text-decoration: none;}
 .title{
   text-align: center;
   color: var(--light2);
@@ -29,15 +29,31 @@ body {
 
 .containerMain {
   width: 500px;
-  height: 800px;
+  height: 625px;
   display: grid;
-  grid-template-rows: 0.1fr 0.1fr 0.8fr;
+  grid-template-rows: 0.2fr 0.8fr;
   overflow: hidden;
   border-radius: 25px;
+  background-color: var(--lightdark);
+  filter: drop-shadow(0px 32px 16px rgba(0, 0, 0, 0.1));
 }
 
+.logoTitle{
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+}
+.logoTitle img{
+  height: 50px;
+  margin-right: 16px;
+}
+
+.logoTitle h2{
+  color: var(--light2);
+}
 .cardContainer {
-  background-color: var(--lightdark);
   display: flex;
   justify-content: center;
   height: 100%;
@@ -122,4 +138,9 @@ body {
 
 .info{
   font-size: xx-large;
+}
+
+.error{
+  margin-top:8px ;
+  margin-left: 4px;
 }

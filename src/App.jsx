@@ -17,28 +17,21 @@ function App() {
     <>
       <div className="bodyContainer">
         <div className="containerMain">
-          <div className="title">
-            <h1>Search Your City</h1>
-          </div>
+          
           <SearchBox updateInfo={updateInfo} />
-          <InfoBox info={weatherInfo} />
-          {/* {showInfo && (
-          <>
-            <InfoBox info={weatherInfo} />{" "}
-          </>
-        )} */}
-          {/* <div className="windData">
-          <NavigationIcon
-            sx={{ fontSize: 160 }}
-            id="windRotation"
-            style={{
-              transform: `rotate(${weatherInfo.windDirection}deg)`,
-              color: "white",
-            }}
-          />{" "}
-          <h2 style={{ color: "white" }}>Wind Direction</h2>
-        </div> */}
+          {showInfo ? (
+            <InfoBox info={weatherInfo} />
+          ) : (
+            <div className="title">
+              <h1>Search Your City</h1>
+            </div>
+          )}
         </div>
+        <a className="logoTitle" href="https://github.com/prashant1177/weatherapp" target="_blank">
+            <img src="./falcon.png" alt="falcon"/>
+            <h2>Weather App - Github &#8599;</h2>
+            
+          </a>
       </div>
     </>
   );
