@@ -14,7 +14,7 @@ A simple and fast **Weather App** built with **React Vite**, leveraging API inte
 - **React** – Frontend framework  
 - **Vite** – Lightning-fast development setup  
 - **API Integration** – Fetching real-time weather data  
-- **CSS / TailwindCSS** – Styling  
+- **CSS** – Styling  
 
 ## 📌 How to Run Locally  
 
